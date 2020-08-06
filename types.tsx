@@ -14,6 +14,10 @@ export interface Entry {
 export type BottomTabParamList = {
   TabOne: { onNewEntry: (product: SneakersApi.Schema.Sneakers.Api.Content.Response.Thread, skuId: string) => void };
   TabTwo: { entries: Entry[] };
+  // TabThree: { 
+  //   entry: Entry
+  //   onEntryUpdate: (skuId: string, status: string) => void
+  // }
 };
 
 export type TabOneParamList = {
@@ -23,3 +27,10 @@ export type TabOneParamList = {
 export type TabTwoParamList = {
   TabTwoScreen: { entries: Entry[] };
 };
+
+// export type TabThreeParamList = {
+//   TabThreeScreen: { 
+//     entry: Entry
+//     onEntryUpdate: (skuId: string, status: string) => void
+//   }
+// };
