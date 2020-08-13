@@ -11,7 +11,6 @@ import { TabTwoParamList, Entry } from '../types';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
-import { Subscription } from '@unimodules/core';
 
 import * as apiHelper from '../packages/api/sneakers'
 
@@ -75,7 +74,7 @@ export default function TabTwoScreen(props: IProps) {
     }
     setTimeout(() => {
       confirmEntry(item)
-    }, 10000)
+    }, 1000)
   }
 
   const run = async (item: Entry): Promise<void> => {
@@ -86,8 +85,7 @@ export default function TabTwoScreen(props: IProps) {
     const entryRes = await apiHelper.RunEntry(item.product.product.id, item.skuId)
     const id = entryRes?.id
     let status = id ? 'PENDING' : 'FAILED'
-
-    let message = `runner done, got id: ${id} and status: ${status}`
+    let message = `runner done, got id: ${id} and status: ${status}.${entryRes?.estimatedResultAvailability ? ` should be getting a result by ${entryRes.estimatedResultAvailability}` : ''}`
     console.log(message)
     setSelected({ id: item.skuId, status: status, message: message })
 
